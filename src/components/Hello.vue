@@ -1,8 +1,11 @@
 <template>
 <div class="hello">
-  <div class="test right">
-    {{ msg }}
-  </div>
+  <mt-header title="msg">
+    <router-link to="/" slot="left">
+      <mt-button icon="back"></mt-button>
+    </router-link>
+    <mt-button icon="more" slot="right"></mt-button>
+  </mt-header>
 </div>
 </template>
 

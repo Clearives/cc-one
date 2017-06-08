@@ -4,6 +4,8 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import axios from 'axios'
 import store from './store/index.js'
+import MintUI from 'mint-ui'
+import 'mint-ui/lib/style.css'
 import App from './App';
 import router from './router';
 import Mock from './mock';
@@ -13,6 +15,7 @@ import './config/rem';
 
 Vue.config.productionTip = false;
 Vue.use(Vuex)
+Vue.use(MintUI)
 let useMock = location.search.indexOf('mock') > -1
 useMock && Mock.bootstrap();
 router.beforeEach((to, from, next) => {
