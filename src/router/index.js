@@ -9,7 +9,7 @@ export default new Router({
       path: '/hello',
       component: Hello,
       name: '',
-      hidden: true
-    }
-  ]
+      hidden: true,
+    },
+  ],
 });

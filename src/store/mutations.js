@@ -1,7 +1,7 @@
 export const state = {
-  todos: []
-}
+  todos: [],
+};
 
 export const mutations = {
-    
-}
+
+};
