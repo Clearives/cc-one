@@ -22,4 +22,5 @@ export default {
 .fade-leave-active {
 	opacity: 0;
 }
+
 </style>

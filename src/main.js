@@ -4,6 +4,7 @@ import Vue from 'vue';
 import Vuex from 'vuex';
 import MintUI from 'mint-ui';
 import 'mint-ui/lib/style.css';
+// import axios from 'axios';
 import store from './store/index';
 import App from './App';
 import router from './router';
@@ -20,8 +21,8 @@ router.beforeEach((to, from, next) => {
     console.log('hello');
   }
   const user = JSON.parse(sessionStorage.getItem('user'));
-  if (!user && to.path != '/hello') {
-    next({ path: '/hello' });
+  if (!user && to.path != '/login') {
+    next({ path: '/login' });
   } else {
     next();
   }

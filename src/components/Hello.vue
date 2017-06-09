@@ -1,44 +1,37 @@
 <template>
 <div class="hello">
-  <mt-header title="标题">
-    <router-link to="/" slot="left">
-      <mt-button icon="back"></mt-button>
-    </router-link>
-    <mt-button icon="more" slot="right"></mt-button>
-  </mt-header>
+  <h3>{{msg}}</h3>
+  <p>Hello, {{user.userid}}</p>
 </div>
 </template>
 
 <script>
-import axios from 'axios';
+// import axios from 'axios';
 
 export default {
   name: 'hello',
   data() {
     return {
       msg: 'Welcome to cc-one',
+      user: ''
     };
   },
   mounted() {
-    axios.get('/api/user/admin').then((res) => {
-      console.log(res.data);
-    });
-    axios.post('/api/create', {
-      userid: new Date().getTime(),
-      password: '12312'
-    }).then((res) => {
-      console.log(res.data);
-    });
+    this.user = JSON.parse(sessionStorage.getItem('user'));
   }
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style lang="less" scoped>
-  .test {
-    font-size: 0.28rem;
-    width: 100%;
-    height: 0.3rem;
-    line-height: 0.3rem;
+  .hello {
+    width: 80%;
+    height: 200px;
+    margin: 0 auto;
+    margin-top: 15%;
+    p {
+      color: #f60;
+      padding: 20px 0;
+    }
   }
 </style>
