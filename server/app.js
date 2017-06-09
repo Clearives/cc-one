@@ -14,7 +14,7 @@ var users = require('./routes/users');
 
 var app = express();
 global.dbs = require('./models/dbs');
-global.db = mongoose.connect("mongodb://localhost:27017/test");
+global.db = mongoose.connect("mongodb://localhost:27017/one");
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
