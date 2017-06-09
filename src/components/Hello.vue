@@ -1,6 +1,6 @@
 <template>
 <div class="hello">
-  <mt-header title="msg">
+  <mt-header title="标题">
     <router-link to="/" slot="left">
       <mt-button icon="back"></mt-button>
     </router-link>
@@ -10,6 +10,8 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   name: 'hello',
   data() {
@@ -17,6 +19,17 @@ export default {
       msg: 'Welcome to cc-one',
     };
   },
+  mounted() {
+    axios.get('/api/user/admin').then((res) => {
+      console.log(res.data);
+    });
+    axios.post('/api/create', {
+      userid: new Date().getTime(),
+      password: '12312'
+    }).then((res) => {
+      console.log(res.data);
+    });
+  }
 };
 </script>
 
