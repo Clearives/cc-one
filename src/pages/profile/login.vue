@@ -34,7 +34,7 @@ export default {
       };
       axios.post('/api/login', params).then((res) => {
         if (res.data.code === 200) {
-          location.href = '#/hello';
+          location.href = '#/admin';
           sessionStorage.setItem('user', JSON.stringify(params));
         }
       });
