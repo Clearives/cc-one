@@ -2,6 +2,7 @@ var express = require('express');
 var router = express.Router();
 var dbs = require('../models/dbs');
 var user = dbs.getModel('user');
+var post = dbs.getModel('post');
 
 /* GET home page. */
 router.get('/', (req, res, next) => {
@@ -20,13 +21,12 @@ router.get('/user/admin', function(req, res, next) {
 
 
 router.post('/create', (req, res, next) => {
-      let newUser = [{
-          userid: req.body.userid,
-          password: req.body.password
-      }]
-      user.create(newUser, (err) => {
+      post.create(req.body, (err) => {
           if(err) return console.log(err)
-          res.send("ok")
+          res.send({
+            code: 200,
+            msg: '发布成功'
+          });
       })
   })
 
