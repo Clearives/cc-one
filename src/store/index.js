@@ -4,7 +4,7 @@ import createLogger from 'vuex/dist/logger';
 import { state, mutations } from './mutations';
 import { actions } from './actions';
 import * as getters from './getters';
-import count from './modules/count';
+import home from './modules/home';
 
 Vue.use(Vuex);
 const debug = process.env.NODE_ENV !== 'production';
@@ -22,7 +22,7 @@ export default new Vuex.Store({
   state,
   getters,
   modules: {
-    count,
+    home,
   },
   actions,
   mutations,
