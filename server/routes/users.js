@@ -1,7 +1,9 @@
 var express = require('express');
 var router = express.Router();
+var api = require('../api');
 var dbs = require('../models/dbs');
 var user = dbs.getModel('user');
+
 
 router.post('/login', (req, res, next) => {
   let newUser = [
@@ -60,15 +62,15 @@ router.post('/register', (req, res, next) => {
   })
 })
 
-router.get('/user/admin', function(req, res, next) {
-  var response = res;
-  user.find({}, function(err, result, res) {
-    if (err)
-      return console.log(err)
-    response.send(JSON.stringify(result));
+
+router.get('/user/admin', (req, res, next) => {
+  var a = api.getUser();
+  console.log(a);
+  api.getUser().then((users) => {
+    res.send({code: 200, users})
+  }).catch(err => {
+    res.send({code: -200, message: err.toString()})
   })
-
-});
-
+})
 
 module.exports = router;
