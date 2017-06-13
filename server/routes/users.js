@@ -60,8 +60,6 @@ router.post('/register', (req, res, next) => {
 
 
 router.get('/user/admin', (req, res, next) => {
-  var a = api.getUser();
-  console.log(a);
   api.getUser().then((users) => {
     res.send({ code: 200, users })
   }).catch(err => {
