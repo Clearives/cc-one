@@ -7,7 +7,7 @@ router.post('/create', (req, res, next) => {
   post.create(req.body, (err) => {
     if (err)
       return console.log(err)
-    res.send({code: 200, msg: '发布成功'});
+    res.send({ code: 200, msg: '发布成功' });
   })
 })
 

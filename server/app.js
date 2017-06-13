@@ -14,18 +14,18 @@ global.dbs = require('./models/dbs');
 global.db = mongoose.connect("mongodb://localhost:27017/one");
 
 app.all('*', function(req, res, next) {
-    res.header("Access-Control-Allow-Origin", "*");
-    res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
-    res.header("Access-Control-Allow-Methods","PUT,POST,GET,DELETE,OPTIONS");
-    next();
+  res.header("Access-Control-Allow-Origin", "*");
+  res.header("Access-Control-Allow-Headers", "X-Requested-With,Content-Type");
+  res.header("Access-Control-Allow-Methods", "PUT,POST,GET,DELETE,OPTIONS");
+  next();
 });
-app.use(session({secret: 'keyboard cat'}))
+app.use(session({ secret: 'keyboard cat' }))
 app.use(flash());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 
-routes(app)
+routes(app);
 
 app.set('port', process.env.PORT || 3000);
 app.listen(app.get('port'), function() {

@@ -1,13 +1,13 @@
 module.exports = {
-  user:{
-      userid:{type:String,required:true},
-      password:{type:String,required:true}
+  user: {
+    userid: { type: String, required: true },
+    password: { type: String, required: true }
   },
   post: {
-    classify:{type:"string"},
-    title:{type:'string'},
-    content:{type:'string'},
-    contentToMark:{type:'string'}
+    classify: { type: "string" },
+    title: { type: 'string' },
+    content: { type: 'string' },
+    contentToMark: { type: 'string' }
   }
 };
 

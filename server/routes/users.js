@@ -6,12 +6,10 @@ var user = dbs.getModel('user');
 
 
 router.post('/login', (req, res, next) => {
-  let newUser = [
-    {
-      userid: req.body.userid,
-      password: req.body.password
-    }
-  ]
+  let newUser = [{
+    userid: req.body.userid,
+    password: req.body.password
+  }]
   user.findOne({
     userid: req.body.userid
   }, function(err, doc) {
@@ -20,28 +18,26 @@ router.post('/login', (req, res, next) => {
       console.log(err);
     } else if (!doc) { //查询不到用户名匹配信息，则用户名不存在
       req.session.error = '用户名不存在';
-      res.send({code: 404, msg: '用户名不存在'}); //    状态码返回404
+      res.send({ code: 404, msg: '用户名不存在' }); //    状态码返回404
     } else {
 
       if (req.body.password != doc.password) { //查询到匹配用户名的信息，但相应的password属性不匹配
         req.session.error = "密码错误";
-        res.send({code: 404, msg: '密码错误'});
+        res.send({ code: 404, msg: '密码错误' });
         //    res.redirect("/login");
       } else { //信息匹配成功，则将此对象（匹配到的user) 赋给session.user  并返回成功
         req.session.user = doc;
-        res.send({code: 200, msg: '登录成功'});
+        res.send({ code: 200, msg: '登录成功' });
       }
     }
   })
 })
 
 router.post('/register', (req, res, next) => {
-  let newUser = [
-    {
-      userid: req.body.userid,
-      password: req.body.password
-    }
-  ]
+  let newUser = [{
+    userid: req.body.userid,
+    password: req.body.password
+  }]
   user.findOne({
     userid: req.body.userid
   }, function(err, doc) {
@@ -50,13 +46,13 @@ router.post('/register', (req, res, next) => {
       console.log(err);
     } else if (doc) { //查询不到用户名匹配信息，则用户名不存在
       req.session.error = '用户名已存在';
-      res.send({code: 404, msg: '用户名已存在'}); //    状态码返回404
+      res.send({ code: 404, msg: '用户名已存在' }); //    状态码返回404
     } else {
       user.create(newUser, (err) => {
         req.session.user = newUser
         if (err)
           return console.log(err)
-        res.send({code: 200, msg: '注册成功'});
+        res.send({ code: 200, msg: '注册成功' });
       })
     }
   })
@@ -67,9 +63,9 @@ router.get('/user/admin', (req, res, next) => {
   var a = api.getUser();
   console.log(a);
   api.getUser().then((users) => {
-    res.send({code: 200, users})
+    res.send({ code: 200, users })
   }).catch(err => {
-    res.send({code: -200, message: err.toString()})
+    res.send({ code: -200, message: err.toString() })
   })
 })
 

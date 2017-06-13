@@ -5,7 +5,7 @@ var post = require('./post');
 
 
 module.exports = (app) => {
-  app.use('/',user);
-  app.use('/',post);
+  app.use('/', user);
+  app.use('/', post);
 
 }
