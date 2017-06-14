@@ -1,8 +1,9 @@
 var mongoose = require('mongoose');
+var timestamps = require('mongoose-time');
 var Schema = mongoose.Schema;
 var models = require("./model");
 for (var m in models) {
-  mongoose.model(m, new Schema(models[m]), m);
+  mongoose.model(m, new Schema(models[m]).plugin(timestamps()), m);
 }
 module.exports = {
   getModel: function(type) {
