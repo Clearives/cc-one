@@ -13,9 +13,7 @@
 
 <script>
 import axios from 'axios';
-import crypto from 'crypto';
-
-let md5 = crypto.createHash('md5');
+import md5 from 'blueimp-md5';
 
 export default {
   name: 'register',
@@ -30,7 +28,7 @@ export default {
       if (this.userid == '' || this.password == '') return;
       let params = {
         userid: this.userid,
-        password: md5.update(this.password).digest('hex')
+        password: md5(this.password)
       };
       axios.post('/api/register', params).then((res) => {
         if (res.data.code === 200) {

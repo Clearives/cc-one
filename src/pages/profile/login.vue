@@ -5,7 +5,7 @@
       <mt-field label="用户名" placeholder="请输入用户名" v-model="userid"></mt-field>
       <mt-field label="密码" placeholder="请输入密码" type="password" v-model="password"></mt-field>
       <div class="btn-login">
-        <mt-button @click.native="handleLogin">点击登录</mt-button>
+        <mt-button @click="handleLogin">点击登录</mt-button>
       </div>
     </div>
   </div>
@@ -13,9 +13,8 @@
 
 <script>
 import axios from 'axios';
-import crypto from 'crypto';
+import md5 from 'blueimp-md5';
 
-let md5 = crypto.createHash('md5');
 
 export default {
   name: 'login',
@@ -30,12 +29,14 @@ export default {
       if (this.userid == '' || this.password == '') return;
       let params = {
         userid: this.userid,
-        password: md5.update(this.password).digest('hex')
+        password: md5(this.password)
       };
       axios.post('/api/login', params).then((res) => {
         if (res.data.code === 200) {
           location.href = '#/admin';
           sessionStorage.setItem('user', JSON.stringify(params));
+        } else {
+          console.log('登录失败');
         }
       });
     },
