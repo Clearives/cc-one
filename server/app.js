@@ -1,17 +1,22 @@
-var express = require('express');
-var path = require('path');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-var mongoose = require("mongoose");
-var session = require('express-session');
-var flash = require('connect-flash');
+const express = require('express');
+const path = require('path');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
+const mongoose = require("mongoose");
+const session = require('express-session');
+const flash = require('connect-flash');
+const fs = require('fs');
+const join = require('path').join;
 
 
-var routes = require('./routes/index');
+const models = join(__dirname, './models');
+fs.readdirSync(models)
+  .filter(file => ~file.search(/^[^\.].*\.js$/))
+  .forEach(file => require(join(models, file)));
+const routes = require('./routes/index');
 
-var app = express();
-global.dbs = require('./models/dbs');
-global.db = mongoose.connect("mongodb://localhost:27017/one");
+const app = express();
+db = mongoose.connect("mongodb://localhost:27017/one");
 
 app.all('*', function(req, res, next) {
   res.header("Access-Control-Allow-Origin", "*");
