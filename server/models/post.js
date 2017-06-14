@@ -9,7 +9,10 @@ const postSchema = new Schema({
 })
 
 postSchema.statics = {
-
+	getPost: function() {
+		console.log(this.find())
+		return this.find()
+	}
 };
 
 mongoose.model('post', postSchema, 'post');
