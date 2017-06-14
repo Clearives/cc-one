@@ -1,11 +1,9 @@
-var express = require('express');
-var router = express.Router();
-var user = require('./users');
-var post = require('./post');
-
+const express = require('express');
+const router = express.Router();
+const user = require('./users');
+const post = require('./post');
 
 module.exports = (app) => {
   app.use('/', user);
   app.use('/', post);
-
 }
