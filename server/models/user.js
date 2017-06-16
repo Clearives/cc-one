@@ -3,13 +3,13 @@ const Schema = mongoose.Schema;
 
 
 const userSchema = new Schema({
-  userid: { 
-  	type: String,
-  	required: true
+  userid: {
+    type: String,
+    required: true
   },
   password: {
-  	type: String,
-  	required: true
+    type: String,
+    required: true
   },
   meta: {
     createAt: {
@@ -22,6 +22,15 @@ const userSchema = new Schema({
     }
   }
 })
+
+userSchema.pre('save', function(next) {
+  if (this.isNew) {
+    this.meta.createAt = this.meta.updateAt = Date.now();
+  } else {
+    this.meta.updateAt = Date.now();
+    next();
+  }
+ })
 
 userSchema.statics = {
 
