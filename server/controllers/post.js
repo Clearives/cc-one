@@ -9,7 +9,7 @@ module.exports = {
   //   });
   // },
   getAllPosts: (req, res) => {
-    Post.find().then((post) => {
+    Post.add().then((post) => {
       res.send({ code: 200, msg: 'succ', servertTime:new Date().getTime(),  data: post });
     });
   },
