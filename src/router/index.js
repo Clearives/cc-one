@@ -1,6 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Hello from '@/components/Hello';
+import WapIndex from '../pages/wap/Index';
 import Login from '../pages/profile/login';
 import Register from '../pages/profile/register';
 import Admin from '../pages/admin/layout/Home';
@@ -14,6 +15,12 @@ export default new Router({
     {
       path: '/hello',
       component: Hello,
+      name: '',
+      hidden: true,
+    },
+    {
+      path: '/wap',
+      component: WapIndex,
       name: '',
       hidden: true,
     },
