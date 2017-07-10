@@ -1,7 +1,7 @@
 import Vue from 'vue';
 import Router from 'vue-router';
 import Hello from '@/components/Hello';
-import WapIndex from '../pages/wap/Index';
+import WapGraph from '../pages/wap/Graph';
 import Login from '../pages/profile/login';
 import Register from '../pages/profile/register';
 import Admin from '../pages/admin/layout/Home';
@@ -19,8 +19,8 @@ export default new Router({
       hidden: true,
     },
     {
-      path: '/wap',
-      component: WapIndex,
+      path: '/wap/graph',
+      component: WapGraph,
       name: '',
       hidden: true,
     },
