@@ -6,6 +6,7 @@ import Register from '../pages/profile/register';
 import Admin from '../pages/admin/layout/Home';
 import Dashboard from '../pages/admin/Dashboard';
 import PostCreate from '../pages/admin/post/PostCreate';
+import PostList from '../pages/admin/post/PostList';
 
 Vue.use(Router);
 export default new Router({
@@ -49,7 +50,13 @@ export default new Router({
           path: '/post/edit/:postid',
           component: PostCreate,
           name: 'Edit Post',
+        },
+        {
+          path: '/post/list',
+          component: PostList,
+          name: 'Post List',
         }
+
       ]
     },
   ],
