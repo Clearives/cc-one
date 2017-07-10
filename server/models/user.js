@@ -28,9 +28,9 @@ userSchema.pre('save', function(next) {
     this.meta.createAt = this.meta.updateAt = Date.now();
   } else {
     this.meta.updateAt = Date.now();
-    next();
   }
- })
+  next();
+})
 
 userSchema.statics = {
 
